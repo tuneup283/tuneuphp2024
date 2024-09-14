@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="css/jquery.pagepiling.min.css" />
+		<script
+			src="https://kit.fontawesome.com/412770e83a.js"
+			crossorigin="anonymous"></script>
+
+		<title>株式会社Tuneup</title>
+	</head>
+	<body>
+		<div id="pagepiling">
+			<div class="section" id="section1">
+				<div class="section-content">
+					<h1>未来に必要な<br />デジタル戦略を共創する。</h1>
+				</div>
+			</div>
+			<div class="section" id="section2">
+				<div class="section-content">
+					<h1>
+						自由な発想と、高い技術力で、<br />テクノロジーをもっと身近に。
+					</h1>
+				</div>
+			</div>
+			<div class="section" id="section3">
+				<div class="section-content">
+					<h1>Tuneupが提供する価値</h1>
+				</div>
+			</div>
+			<div class="section" id="section4">
+				<div class="section-content">
+					<h1>制作費用シミュレーター</h1>
+				</div>
+			</div>
+			<div class="section" id="section5">
+				<div class="section-content">
+					<h1>お問い合わせ</h1>
+				</div>
+			</div>
+			<nav id="myMenu">
+				<ul>
+					<li data-menuanchor="first"><a href="#first">First section</a></li>
+					<li data-menuanchor="second"><a href="#second">Second section</a></li>
+					<li data-menuanchor="third"><a href="#third">Third section</a></li>
+					<li data-menuanchor="fourth"><a href="#fourth">Fourth section</a></li>
+					<li data-menuanchor="fifth"><a href="#fifth">Fifth section</a></li>
+				</ul>
+			</nav>
+			<div id="section_num">
+				<span id="num_change">1</span>
+				<span>5</span>
+			</div>
+		</div>
+		<script
+			src="https://code.jquery.com/jquery-3.7.1.min.js"
+			integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+			crossorigin="anonymous"></script>
+		<script src="js/jquery.pagepiling.min.js"></script>
+		<script>
+			$(document).ready(function () {
+				$("#pagepiling").pagepiling({
+					menu: "#myMenu",
+					direction: "vertical",
+					verticalCentered: true,
+					sectionsColor: [
+						"#f2f2f2",
+						"#4BBFC3",
+						"#7BAABE",
+						"#f2f2f2",
+						"#4BBFC3",
+					],
+					anchors: ["first", "second", "third", "fourth", "fifth"],
+					scrollingSpeed: 10,
+					easing: "swing",
+					loopBottom: false,
+					loopTop: false,
+					css3: true,
+					navigation: false,
+					afterLoad: function (anchorLink, index) {
+						switch (anchorLink) {
+							case "first":
+							case "":
+								$("#num_change").text(1);
+								break;
+							case "second":
+								$("#num_change").text(2);
+								break;
+							case "third":
+								$("#num_change").text(3);
+								break;
+							case "fourth":
+								$("#num_change").text(4);
+								break;
+							case "fifth":
+								$("#num_change").text(5);
+								break;
+						} // セクションがまだ訪れられていない場合
+						if (!visitedSections.includes(anchorLink)) {
+							$(".pp-section.active .section-content").hide().fadeIn(1000); //フェードイン
+							visitedSections.push(anchorLink); // トラックするための配列に追加
+						}
+					},
+				});
+			});
+		</script>
+	</body>
+</html>

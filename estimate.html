@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webサービス見積もりシミュレーター</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            padding: 20px;
+            align-items: center;
+        }
+        .option {
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .option:hover {
+            background-color: #f7f7f7;
+        }
+        .selected {
+            background-color: #e9e9e9;
+        }
+        .total {
+            grid-column: span 2;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Webサービス 見積もりシミュレーター</h1>
+
+<div class="grid-container">
+    <div class="option" onclick="selectOption(this)">
+        <img src="path_to_corporate_image.png" alt="企業サイト">
+        <p>企業サイト</p>
+    </div>
+    <div class="option" onclick="selectOption(this)">
+        <img src="path_to_trade_image.png" alt="取引サイト">
+        <p>取引サイト</p>
+    </div>
+    <div class="option" onclick="selectOption(this)">
+        <img src="path_to_product_image.png" alt="商品・サービスサイト">
+        <p>商品・サービスサイト</p>
+    </div>
+    <!-- 以下、他のオプションも同様に追加してください -->
+
+    <div class="total">
+        選択されたサービス: <span id="selectedService">なし</span>
+    </div>
+</div>
+
+<script>
+    function selectOption(element) {
+        // すべてのオプションの選択をクリア
+        const options = document.querySelectorAll('.option');
+        options.forEach(opt => opt.classList.remove('selected'));
+
+        // 選択されたオプションをハイライト
+        element.classList.add('selected');
+
+        // 選択されたサービスを表示
+        const serviceName = element.querySelector('p').textContent;
+        document.getElementById('selectedService').textContent = serviceName;
+    }
+</script>
+
+</body>
+</html>

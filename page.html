@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="css/jquery.pagepiling.min.css" />
+		<script
+			src="https://kit.fontawesome.com/412770e83a.js"
+			crossorigin="anonymous"></script>
+		<style>
+			body,
+			html {
+				margin: 0;
+				padding: 0;
+				height: 100%;
+				overflow: hidden;
+			}
+
+			#page-container {
+				height: 100%;
+			}
+
+			.section {
+				height: 100%;
+				width: 100%;
+				position: relative;
+				text-align: center;
+			}
+		</style>
+
+		<title>株式会社Tuneup</title>
+	</head>
+	<body>
+		<div id="page-container">
+			<div class="section" id="section1">セクション 1</div>
+			<div class="section" id="section2">セクション 2</div>
+			<div class="section" id="section3">セクション 3</div>
+			<!-- 他のセクションを追加... -->
+		</div>
+
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				var container = document.getElementById("page-container");
+				var sections = document.getElementsByClassName("section");
+				var currentSection = 0;
+
+				document.addEventListener("wheel", function (e) {
+					if (e.deltaY > 0 && currentSection < sections.length - 1) {
+						// 下へスクロール
+						currentSection++;
+						moveToCurrentSection();
+					} else if (e.deltaY < 0 && currentSection > 0) {
+						// 上へスクロール
+						currentSection--;
+						moveToCurrentSection();
+					}
+				});
+
+				function moveToCurrentSection() {
+					container.style.transform =
+						"translateY(" + -currentSection * 100 + "vh)";
+				}
+			});
+		</script>
+	</body>
+</html>
